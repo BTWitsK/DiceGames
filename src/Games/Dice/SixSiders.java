@@ -37,24 +37,62 @@ public class SixSiders {
         return die1 == die2;
     }
 
+    private static void testGetDie(SixSiders testSixSiders){
+
+        testSixSiders.roll();
+
+        int actualDie1 = testSixSiders.die1;
+        int actualDie2 = testSixSiders.die2;
+
+        int expectedDie1 = testSixSiders.getDie1();
+        int expectedDie2 = testSixSiders.getDie2();
+
+        String returnDice1 = String.format("Actual value of die 1:%d\n" +
+                " Expected value of die1:%d\n",actualDie1,expectedDie1);
+
+        String returnDice2 = String.format("Actual value of die 2:%d\n" +
+                " Expected value of die2:%d\n",actualDie2,expectedDie2);
+
+        if (actualDie1 != expectedDie1) StdOut.println(returnDice1);
+
+        if (actualDie2 != expectedDie2) StdOut.println(returnDice2);
+
+
+
+
+    }
+
     private static void testValue(SixSiders testSixSiders){
 
         testSixSiders.roll();
         int sum = testSixSiders.getDie1() + testSixSiders.getDie2();
 
-        if (testSixSiders.value() == sum)
-            StdOut.format("%d is the same as %d", testSixSiders.value(),sum);
+
+        String returnString = testSixSiders.value() == sum ?
+                String.format("%d is the same as %d%n",sum,testSixSiders.value()):
+                "ERROR";
+
+        StdOut.println(returnString);
+
+
+
+
+
+
     }
 
     private static void testIsDoubles(SixSiders testSixSiders){
         //Todo: implement testIsDouble
 
         testSixSiders.roll();
-        int die1 = testSixSiders.getDie1();
-        int die2 = testSixSiders.getDie2();
         boolean flag = testSixSiders.isDoubles();
 
-        StdOut.format("The Value of die 1 & 2 is, %d and %d",die1,die2);
+        int expected = testSixSiders.value();
+        int actual = testSixSiders.getDie1() + testSixSiders.getDie2();
+
+        StdOut.format("The expected value is:%d, the actual value is %d%n"
+                ,expected,actual);
+
         StdOut.println("The value of isDoubles is " + flag);
 
     }
@@ -64,6 +102,8 @@ public class SixSiders {
         SixSiders PairOfDice = new SixSiders();
 
         testValue(PairOfDice);
+        testIsDoubles(PairOfDice);
+
 
 
     }
