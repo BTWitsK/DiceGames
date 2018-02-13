@@ -9,12 +9,13 @@ import stdlib.StdRandom;
 public class SixSiders {
     private int die1, die2;
 
+
     public SixSiders() { roll(); }
 
     public void roll() {
         //rolls the dice created
-       die1 = StdRandom.uniform(1, 7);
-       die2 = StdRandom.uniform(1, 7);
+        die1 = StdRandom.uniform(1, 7);
+        die2 = StdRandom.uniform(1, 7);
     }
 
     public int value() {
@@ -74,18 +75,14 @@ public class SixSiders {
     }
 
     private static void testIsDoubles(SixSiders testSixSiders){
-        //Todo: implement testIsDouble
 
-        testSixSiders.roll();
-        boolean flag = testSixSiders.isDoubles();
+        while(testSixSiders.getDie1() != testSixSiders.getDie2()){ testSixSiders.roll();}
 
-        int expected = testSixSiders.value();
-        int actual = testSixSiders.getDie1() + testSixSiders.getDie2();
+        boolean actual = testSixSiders.isDoubles();
+        boolean expected = testSixSiders.getDie1() == testSixSiders.getDie2();
 
-        StdOut.format("The expected value is:%d, the actual value is %d%n"
-                ,expected,actual);
 
-        StdOut.println("The value of isDoubles is " + flag);
+        if (!(actual && expected)) StdOut.println("ERROR is doubles");
 
     }
 
@@ -93,10 +90,11 @@ public class SixSiders {
 
         SixSiders PairOfDice = new SixSiders();
 
+        testGetDie(PairOfDice);
         testValue(PairOfDice);
         testIsDoubles(PairOfDice);
 
-
+        StdOut.println("Finished");
 
     }
 
