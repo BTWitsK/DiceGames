@@ -12,7 +12,7 @@ public class SixSiders {
 
     public SixSiders() { roll(); }
 
-    public void roll() {
+    private void roll() {
         //rolls the dice created
         die1 = StdRandom.uniform(1, 7);
         die2 = StdRandom.uniform(1, 7);
@@ -64,13 +64,15 @@ public class SixSiders {
 
         testSixSiders.roll();
         int expected = testSixSiders.getDie1() + testSixSiders.getDie2();
-        int actual = testSixSiders.die1 + testSixSiders.die2;
+        int actual = testSixSiders.value();
 
 
         String returnString = String.format("Actual value is %d\n " +
                 "expected value %d\n",actual, expected);
 
-        if (expected != actual) StdOut.println(returnString);
+        if (expected != actual) {
+            StdOut.println(returnString);
+        }
 
     }
 
@@ -97,18 +99,5 @@ public class SixSiders {
         StdOut.println("Finished");
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
