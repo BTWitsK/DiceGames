@@ -2,7 +2,7 @@
 
 package Games.Dice;
 
-import javafx.util.Pair;
+
 import stdlib.StdOut;
 import stdlib.StdRandom;
 
@@ -57,27 +57,19 @@ public class SixSiders {
 
         if (actualDie2 != expectedDie2) StdOut.println(returnDice2);
 
-
-
-
     }
 
     private static void testValue(SixSiders testSixSiders){
 
         testSixSiders.roll();
-        int sum = testSixSiders.getDie1() + testSixSiders.getDie2();
+        int expected = testSixSiders.getDie1() + testSixSiders.getDie2();
+        int actual = testSixSiders.die1 + testSixSiders.die2;
 
 
-        String returnString = testSixSiders.value() == sum ?
-                String.format("%d is the same as %d%n",sum,testSixSiders.value()):
-                "ERROR";
+        String returnString = String.format("Actual value is %d\n " +
+                "expected value %d\n",actual, expected);
 
-        StdOut.println(returnString);
-
-
-
-
-
+        if (expected != actual) StdOut.println(returnString);
 
     }
 
